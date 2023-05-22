@@ -1,6 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>搭建 Hexo 博客</title>
+    <url>/2023/05/16/deploy-hexo-pages/</url>
+    <content><![CDATA[<h1 id="部署方案"><a href="#部署方案" class="headerlink" title="部署方案"></a>部署方案</h1><p>此方案需要两个仓库：</p>
+<ol>
+<li>源码仓库（私有）：Hexo 配置文件以及写作等 <strong>原始内容</strong> 均在此操作进行，向此仓库 <strong>push</strong> 后通过 GitHub Actions 部署，并向页面仓库推送。</li>
+<li>页面仓库（公开）：通过 Hexo 生成的静态文件存储与此，GitHub Pages 检测到仓库更新会自动进行部署。</li>
+</ol>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>需要 <a href="https://github.com/">GitHub</a> 账号一个，一台装有 <a href="https://git-scm.com/">Git</a>、<a href="https://nodejs.org/">Nodejs</a> 的电脑，脑子，手。</p>
+<h2 id="安装-hexo-cli-Hexo-主程序"><a href="#安装-hexo-cli-Hexo-主程序" class="headerlink" title="安装 hexo-cli (Hexo 主程序)"></a>安装 hexo-cli (Hexo 主程序)</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-cli <span class="token parameter variable">-g</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="找到合适的目录作为博客根目录，打开-Git-Bash-并运行命令："><a href="#找到合适的目录作为博客根目录，打开-Git-Bash-并运行命令：" class="headerlink" title="找到合适的目录作为博客根目录，打开 Git Bash 并运行命令："></a>找到合适的目录作为博客根目录，打开 Git Bash 并运行命令：</h2><p>(此过程会执行 git clone操作, 网络环境不良可能需要多次重试)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>当看到 “Start blogging with Hexo!” 时表示 Hexo 已经初始化完成。</p>
+<h2 id="启动-Hexo-本地服务端"><a href="#启动-Hexo-本地服务端" class="headerlink" title="启动 Hexo 本地服务端"></a>启动 Hexo 本地服务端</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>当看到 “Hexo is running at <a href="http://localhost:4000/">http://localhost:4000</a> . Press Ctrl+C to stop.” 时表示 Hexo 本地服务端启动完成，其中 <a href="http://localhost:4000/">http://localhost:4000</a> 为本地监听地址，访问该地址即可预览博客。</p>
+<h1 id="配置博客（WIP）"><a href="#配置博客（WIP）" class="headerlink" title="配置博客（WIP）"></a>配置博客（WIP）</h1><p>编辑 _config.yml 文件。下面提供一个模板（该内容可能过时，具体请参考 Hexo 官方文档）</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Hexo Configuration</span>
+<span class="token comment">## Docs: https://hexo.io/docs/configuration.html</span>
+<span class="token comment">## Source: https://github.com/hexojs/hexo/</span>
+
+<span class="token comment"># Site</span>
+<span class="token key atrule">title</span><span class="token punctuation">:</span> Hexo
+<span class="token key atrule">subtitle</span><span class="token punctuation">:</span> <span class="token string">''</span>
+<span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">''</span>
+<span class="token key atrule">keywords</span><span class="token punctuation">:</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> John Doe
+<span class="token key atrule">language</span><span class="token punctuation">:</span> en
+<span class="token key atrule">timezone</span><span class="token punctuation">:</span> <span class="token string">''</span>
+
+<span class="token comment"># URL</span>
+<span class="token comment">## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'</span>
+<span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//example.com
+<span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>year/<span class="token punctuation">:</span>month/<span class="token punctuation">:</span>day/<span class="token punctuation">:</span>title/
+<span class="token key atrule">permalink_defaults</span><span class="token punctuation">:</span>
+<span class="token key atrule">pretty_urls</span><span class="token punctuation">:</span>
+  <span class="token key atrule">trailing_index</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># Set to false to remove trailing 'index.html' from permalinks</span>
+  <span class="token key atrule">trailing_html</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># Set to false to remove trailing '.html' from permalinks</span>
+
+<span class="token comment"># Directory</span>
+<span class="token key atrule">source_dir</span><span class="token punctuation">:</span> source
+<span class="token key atrule">public_dir</span><span class="token punctuation">:</span> public
+<span class="token key atrule">tag_dir</span><span class="token punctuation">:</span> tags
+<span class="token key atrule">archive_dir</span><span class="token punctuation">:</span> archives
+<span class="token key atrule">category_dir</span><span class="token punctuation">:</span> categories
+<span class="token key atrule">code_dir</span><span class="token punctuation">:</span> downloads/code
+<span class="token key atrule">i18n_dir</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>lang
+<span class="token key atrule">skip_render</span><span class="token punctuation">:</span>
+
+<span class="token comment"># Writing</span>
+<span class="token key atrule">new_post_name</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>title.md <span class="token comment"># File name of new posts</span>
+<span class="token key atrule">default_layout</span><span class="token punctuation">:</span> post
+<span class="token key atrule">titlecase</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token comment"># Transform title into titlecase</span>
+<span class="token key atrule">external_link</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># Open external links in new tab</span>
+  <span class="token key atrule">field</span><span class="token punctuation">:</span> site <span class="token comment"># Apply to the whole site</span>
+  <span class="token key atrule">exclude</span><span class="token punctuation">:</span> <span class="token string">''</span>
+<span class="token key atrule">filename_case</span><span class="token punctuation">:</span> <span class="token number">0</span>
+<span class="token key atrule">render_drafts</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">post_asset_folder</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">relative_link</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">future</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">highlight</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">auto_detect</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">tab_replace</span><span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token key atrule">wrap</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">hljs</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">prismjs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">preprocess</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tab_replace</span><span class="token punctuation">:</span> <span class="token string">''</span>
+
+<span class="token comment"># Home page setting</span>
+<span class="token comment"># path: Root path for your blogs index page. (default = '')</span>
+<span class="token comment"># per_page: Posts displayed per page. (0 = disable pagination)</span>
+<span class="token comment"># order_by: Posts order. (Order by date descending by default)</span>
+<span class="token key atrule">index_generator</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token key atrule">per_page</span><span class="token punctuation">:</span> <span class="token number">10</span>
+  <span class="token key atrule">order_by</span><span class="token punctuation">:</span> <span class="token punctuation">-</span>date
+
+<span class="token comment"># Category &amp; Tag</span>
+<span class="token key atrule">default_category</span><span class="token punctuation">:</span> uncategorized
+<span class="token key atrule">category_map</span><span class="token punctuation">:</span>
+<span class="token key atrule">tag_map</span><span class="token punctuation">:</span>
+
+<span class="token comment"># Metadata elements</span>
+<span class="token comment">## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span>
+<span class="token key atrule">meta_generator</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token comment"># Date / Time format</span>
+<span class="token comment">## Hexo uses Moment.js to parse and display date</span>
+<span class="token comment">## You can customize the date format as defined in</span>
+<span class="token comment">## http://momentjs.com/docs/#/displaying/format/</span>
+<span class="token key atrule">date_format</span><span class="token punctuation">:</span> YYYY<span class="token punctuation">-</span>MM<span class="token punctuation">-</span>DD
+<span class="token key atrule">time_format</span><span class="token punctuation">:</span> HH<span class="token punctuation">:</span>mm<span class="token punctuation">:</span>ss
+<span class="token comment">## updated_option supports 'mtime', 'date', 'empty'</span>
+<span class="token key atrule">updated_option</span><span class="token punctuation">:</span> <span class="token string">'mtime'</span>
+
+<span class="token comment"># Pagination</span>
+<span class="token comment">## Set per_page to 0 to disable pagination</span>
+<span class="token key atrule">per_page</span><span class="token punctuation">:</span> <span class="token number">10</span>
+<span class="token key atrule">pagination_dir</span><span class="token punctuation">:</span> page
+
+<span class="token comment"># Include / Exclude file(s)</span>
+<span class="token comment">## include:/exclude: options only apply to the 'source/' folder</span>
+<span class="token key atrule">include</span><span class="token punctuation">:</span>
+<span class="token key atrule">exclude</span><span class="token punctuation">:</span>
+<span class="token key atrule">ignore</span><span class="token punctuation">:</span>
+
+<span class="token comment"># Extensions</span>
+<span class="token comment">## Plugins: https://hexo.io/plugins/</span>
+<span class="token comment">## Themes: https://hexo.io/themes/</span>
+<span class="token key atrule">theme</span><span class="token punctuation">:</span> landscape
+
+<span class="token comment"># Deployment</span>
+<span class="token comment">## Docs: https://hexo.io/docs/one-command-deployment</span>
+<span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> <span class="token string">''</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="美化（可选）"><a href="#美化（可选）" class="headerlink" title="美化（可选）"></a>美化（可选）</h1><p>访问 <a href="https://hexo.io/themes">https://hexo.io/themes</a> 挑选喜爱的主题，作者一般会提供安装引导，不在此赘述。</p>
+<h1 id="托管站点"><a href="#托管站点" class="headerlink" title="托管站点"></a>托管站点</h1><h2 id="妥善保管源数据"><a href="#妥善保管源数据" class="headerlink" title="妥善保管源数据"></a>妥善保管源数据</h2><p>目前 Hexo 程序仅安装在本机，一旦文章源码等丢失，恢复工作区的成本将会是巨大的。所以在此提出的方案是将文章源码托管到 GitHub 私有仓库。</p>
+<ul>
+<li>在 GitHub 上建立私有仓库</li>
+<li>在 Hexo 根目录执行（其中 $repository_url$ 替换为你实际的私有仓库 URL）</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"init"</span>
+<span class="token function">git</span> branch <span class="token parameter variable">-M</span> master
+<span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token variable">$repository_url</span>$
+<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="托管博客页面"><a href="#托管博客页面" class="headerlink" title="托管博客页面"></a>托管博客页面</h2><ul>
+<li>在 GitHub 上建立公开仓库，一般命名为 <code>$GITHUB_USERNAME$.github.io</code>，其中 $GITHUB_USERNAME$ 为你的 GitHub 用户名。（如果按照本条叙述，仓库符合要求的话，GitHub Pages 默认应该是开启的）</li>
+<li>本地生成部署用秘钥对（其中 $YOUR_EMAIL$ 为你的 Git 邮箱，$PAGES_DEPLOY_KEY$ 为密钥文件名）</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-C</span> <span class="token string">"<span class="token variable">$YOUR_EMAIL</span>$"</span> <span class="token parameter variable">-f</span> ~/.ssh/<span class="token variable">$PAGES_DEPLOY_KEY</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>设置<strong>页面仓库</strong> Deploy Key （Settings -&gt; Deploy keys -&gt; Add deploy key），将 ~&#x2F;.ssh&#x2F;$PAGES_DEPLOY_KEY$.pub（公钥）内容粘贴 Key 文本框并勾选下方 Allow write access 选择框（开启部署秘钥仓库写权限）</li>
+<li>设置<strong>源码仓库</strong> Repository secrets （Settings -&gt; Secrets and variable -&gt; Actions -&gt; New repository secret） <ul>
+<li>Name 填 DEPLOY_PRIVATE_KEY</li>
+<li>Secret 填 ~&#x2F;.ssh&#x2F;$PAGES_DEPLOY_KEY$（私钥）</li>
+</ul>
+</li>
+<li>编写<strong>源码仓库</strong> GitHub Actions 自动化流水线脚本<ul>
+<li>在<strong>源码仓库</strong>中的 .github&#x2F;workflows 中新建文件 CI.yml 填写如下内容</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> CI
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hexo-deployment</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout source
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+      <span class="token key atrule">with</span><span class="token punctuation">:</span>
+        <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Restore file modification time
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> find source <span class="token punctuation">-</span>name '<span class="token important">*.md'</span> <span class="token punctuation">|</span> while read file; do touch <span class="token punctuation">-</span>d "$(git log <span class="token punctuation">-</span>1 <span class="token punctuation">-</span><span class="token punctuation">-</span>format="@%ct" "$file")" "$file"; done
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Node.js
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v3
+      <span class="token key atrule">with</span><span class="token punctuation">:</span>
+        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">18</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Get npm cache directory
+      <span class="token key atrule">id</span><span class="token punctuation">:</span> npm<span class="token punctuation">-</span>cache<span class="token punctuation">-</span>dir
+      <span class="token key atrule">shell</span><span class="token punctuation">:</span> bash
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> echo "dir=$(npm config get cache)" <span class="token punctuation">></span><span class="token punctuation">></span> $<span class="token punctuation">&#123;</span>GITHUB_OUTPUT<span class="token punctuation">&#125;</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/cache@v3
+      <span class="token key atrule">id</span><span class="token punctuation">:</span> npm<span class="token punctuation">-</span>cache <span class="token comment"># use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'</span>
+      <span class="token key atrule">with</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> steps.npm<span class="token punctuation">-</span>cache<span class="token punctuation">-</span>dir.outputs.dir <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+        <span class="token key atrule">key</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> runner.os <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">-</span>node<span class="token punctuation">-</span>$<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> hashFiles('<span class="token important">**/package-lock.json')</span> <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+        <span class="token key atrule">restore-keys</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          $&#123;&#123; runner.os &#125;&#125;-node-</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install dependencies &amp; Generate static files
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+        node -v
+        npm i -g hexo-cli
+        npm i
+        hexo clean
+        hexo g</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Upload assets to GitHub Action
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/upload<span class="token punctuation">-</span>artifact@v3
+      <span class="token key atrule">with</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> public
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy to GitHub
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> s0/git<span class="token punctuation">-</span>publish<span class="token punctuation">-</span>subdir<span class="token punctuation">-</span>action@v2.6.0
+      <span class="token key atrule">env</span><span class="token punctuation">:</span>
+        <span class="token key atrule">BRANCH</span><span class="token punctuation">:</span> master
+        <span class="token comment"># CLEAR_GLOBS_FILE: '.clear-target-files'</span>
+        <span class="token key atrule">FOLDER</span><span class="token punctuation">:</span> public
+        <span class="token key atrule">MESSAGE</span><span class="token punctuation">:</span> <span class="token string">'[Blog#&#123;sha&#125;]&#123;msg&#125;'</span>
+        <span class="token comment"># 这一行填写你页面仓库的 git 地址</span>
+        <span class="token key atrule">REPO</span><span class="token punctuation">:</span> git@github.com<span class="token punctuation">:</span>someone/some<span class="token punctuation">-</span>repo.git
+        <span class="token key atrule">SSH_PRIVATE_KEY</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> secrets.DEPLOY_PRIVATE_KEY <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注：GitHub Actions 针对公开仓库提供无限制的运行时间。GitHub Actions 针对私有仓库提供 2000 分钟&#x2F;月运行时间（Pro 计划为 3000 分钟&#x2F;月）只是写写博客免费计划绰绰有余。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="有关-HTTPS-问题。"><a href="#有关-HTTPS-问题。" class="headerlink" title="有关 HTTPS 问题。"></a>有关 HTTPS 问题。</h2><p>如果使用 GitHub Pages 域名，即 xxx.github.io，则默认启用 HTTPS。</p>
+<p>如果使用别名（即自己的 CNAME 解析）且带 CDN 加速服务需要注意，这里以 CloudFlare 为例，在面板中配置 CNAME 后，请<strong>暂时不要</strong>启用 CloudFlare 提供的代理服务，先回到 GitHub Pages 配置页面，等待 Enforce HTTPS 选择框亮起并勾选（如果开启了 CloudFlare 邮件通知，则会收到证书透明度邮件）后，再启用 CDN 代理。</p>
+<p>虽然 GitHub Pages 中不开启强制 HTTPS 连接直接启用 CDN 在访问博客时同样提示为 HTTPS 安全连接，但事实上这个 HTTPS 形同虚设：</p>
+<p>客户端（浏览器） &lt;— HTTPS —&gt; CDN &lt;— HTTP —&gt; 服务端（GitHub Pages）</p>
+<p>而边缘证书成功申请后 HTTPS 才是真正有效的：</p>
+<p>客户端（浏览器） &lt;— HTTPS —&gt; CDN &lt;— HTTPS —&gt; 服务端（GitHub Pages）</p>
+<p>此问题的原始链接：<a href="https://gist.github.com/zbeekman/ac6eeb41ea7980f410959b13416d74c9">https://gist.github.com/zbeekman/ac6eeb41ea7980f410959b13416d74c9</a></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2023/04/23/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
