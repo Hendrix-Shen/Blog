@@ -127,30 +127,30 @@
 <h1 id="托管站点"><a href="#托管站点" class="headerlink" title="托管站点"></a>托管站点</h1><h2 id="妥善保管源数据"><a href="#妥善保管源数据" class="headerlink" title="妥善保管源数据"></a>妥善保管源数据</h2><p>目前 Hexo 程序仅安装在本机，一旦文章源码等丢失，恢复工作区的成本将会是巨大的。所以在此提出的方案是将文章源码托管到 GitHub 私有仓库。</p>
 <ul>
 <li>在 GitHub 上建立私有仓库</li>
-<li>在 Hexo 根目录执行（其中 $repository_url$ 替换为你实际的私有仓库 URL）</li>
+<li>在 Hexo 根目录执行（其中 <code>$REPOSITORY_URL</code> 替换为你实际的私有仓库 URL）</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init
 <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
 <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"init"</span>
 <span class="token function">git</span> branch <span class="token parameter variable">-M</span> master
-<span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token variable">$repository_url</span>$
+<span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token variable">$REPOSITORY_URL</span>
 <span class="token function">git</span> push <span class="token parameter variable">-u</span> origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="托管博客页面"><a href="#托管博客页面" class="headerlink" title="托管博客页面"></a>托管博客页面</h2><ul>
-<li>在 GitHub 上建立公开仓库，一般命名为 <code>$GITHUB_USERNAME$.github.io</code>，其中 $GITHUB_USERNAME$ 为你的 GitHub 用户名。（如果按照本条叙述，仓库符合要求的话，GitHub Pages 默认应该是开启的）</li>
-<li>本地生成部署用秘钥对（其中 $YOUR_EMAIL$ 为你的 Git 邮箱，$PAGES_DEPLOY_KEY$ 为密钥文件名）</li>
+<li>在 GitHub 上建立公开仓库，一般命名为 <code>$GITHUB_USERNAME.github.io</code>，其中 <code>$GITHUB_USERNAME</code> 为你的 GitHub 用户名。（如果按照本条叙述，仓库符合要求的话，GitHub Pages 默认应该是开启的）</li>
+<li>本地生成部署用秘钥对（其中 <code>$YOUR_EMAIL</code> 替换为你的 Git 邮箱，<code>$PAGES_DEPLOY_KEY</code> 替换为密钥文件名）</li>
 </ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-C</span> <span class="token string">"<span class="token variable">$YOUR_EMAIL</span>$"</span> <span class="token parameter variable">-f</span> ~/.ssh/<span class="token variable">$PAGES_DEPLOY_KEY</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-C</span> <span class="token string">"<span class="token variable">$YOUR_EMAIL</span>"</span> <span class="token parameter variable">-f</span> ~/.ssh/<span class="token variable">$PAGES_DEPLOY_KEY</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li>设置<strong>页面仓库</strong> Deploy Key （Settings -&gt; Deploy keys -&gt; Add deploy key），将 ~&#x2F;.ssh&#x2F;$PAGES_DEPLOY_KEY$.pub（公钥）内容粘贴 Key 文本框并勾选下方 Allow write access 选择框（开启部署秘钥仓库写权限）</li>
+<li>设置<strong>页面仓库</strong> Deploy Key （Settings -&gt; Deploy keys -&gt; Add deploy key），将 <code>~/.ssh/$PAGES_DEPLOY_KEY.pub</code>（公钥）文件内容粘贴 Key 文本框并勾选下方 Allow write access 选择框（开启部署秘钥仓库写权限）</li>
 <li>设置<strong>源码仓库</strong> Repository secrets （Settings -&gt; Secrets and variable -&gt; Actions -&gt; New repository secret） <ul>
-<li>Name 填 DEPLOY_PRIVATE_KEY</li>
-<li>Secret 填 ~&#x2F;.ssh&#x2F;$PAGES_DEPLOY_KEY$（私钥）</li>
+<li>Name 直接填写 <code>DEPLOY_PRIVATE_KEY</code></li>
+<li>Secret 填写 <code>~/.ssh/$PAGES_DEPLOY_KEY</code>（私钥）文件内容</li>
 </ul>
 </li>
 <li>编写<strong>源码仓库</strong> GitHub Actions 自动化流水线脚本<ul>
-<li>在<strong>源码仓库</strong>中的 .github&#x2F;workflows 中新建文件 CI.yml 填写如下内容</li>
+<li>在<strong>源码仓库</strong>中的 <code>.github/workflows</code> 目录中新建文件 <code>CI.yml</code> 填写如下内容：</li>
 </ul>
 </li>
 </ul>
@@ -216,13 +216,39 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注：GitHub Actions 针对公开仓库提供无限制的运行时间。GitHub Actions 针对私有仓库提供 2000 分钟&#x2F;月运行时间（Pro 计划为 3000 分钟&#x2F;月）只是写写博客免费计划绰绰有余。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="有关-HTTPS-问题。"><a href="#有关-HTTPS-问题。" class="headerlink" title="有关 HTTPS 问题。"></a>有关 HTTPS 问题。</h2><p>如果使用 GitHub Pages 域名，即 xxx.github.io，则默认启用 HTTPS。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="有关-HTTPS-问题。"><a href="#有关-HTTPS-问题。" class="headerlink" title="有关 HTTPS 问题。"></a>有关 HTTPS 问题。</h2><p>如果使用 GitHub Pages 域名，即 <code>xxx.github.io</code>，则默认启用 HTTPS。</p>
 <p>如果使用别名（即自己的 CNAME 解析）且带 CDN 加速服务需要注意，这里以 CloudFlare 为例，在面板中配置 CNAME 后，请<strong>暂时不要</strong>启用 CloudFlare 提供的代理服务，先回到 GitHub Pages 配置页面，等待 Enforce HTTPS 选择框亮起并勾选（如果开启了 CloudFlare 邮件通知，则会收到证书透明度邮件）后，再启用 CDN 代理。</p>
 <p>虽然 GitHub Pages 中不开启强制 HTTPS 连接直接启用 CDN 在访问博客时同样提示为 HTTPS 安全连接，但事实上这个 HTTPS 形同虚设：</p>
 <p>客户端（浏览器） &lt;— HTTPS —&gt; CDN &lt;— HTTP —&gt; 服务端（GitHub Pages）</p>
 <p>而边缘证书成功申请后 HTTPS 才是真正有效的：</p>
 <p>客户端（浏览器） &lt;— HTTPS —&gt; CDN &lt;— HTTPS —&gt; 服务端（GitHub Pages）</p>
 <p>此问题的原始链接：<a href="https://gist.github.com/zbeekman/ac6eeb41ea7980f410959b13416d74c9">https://gist.github.com/zbeekman/ac6eeb41ea7980f410959b13416d74c9</a></p>
+<h2 id="安装主题导致部署后的页面空白"><a href="#安装主题导致部署后的页面空白" class="headerlink" title="安装主题导致部署后的页面空白"></a>安装主题导致部署后的页面空白</h2><p>通过 Git 安装的主题需要创建<code>子模块（submodule）</code>来嵌入<strong>源码仓库</strong>：</p>
+<p>如果已经安装主题，请移除 <code>themes/$YOUR_THEME</code>，其中 <code>$YOUR_THEME</code> 为你的主题目录名。按如下例子修改命令，重新安装主题（以 NexT 主题为例）：</p>
+<pre class="line-numbers language-diff" data-language="diff"><code class="language-diff"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> git clone https://github.com/next-theme/hexo-theme-next themes/next
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> git submodule add https://github.com/next-theme/hexo-theme-next themes/next</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>首先应当注意到新的 <code>.gitmodules</code> 文件。 该配置文件保存了项目 URL 与已经拉取的本地目录之间的映射：</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">submodule "themes/next"</span><span class="token punctuation">]</span></span>
+	<span class="token key attr-name">path</span> <span class="token punctuation">=</span> <span class="token value attr-value">themes/next</span>
+	<span class="token key attr-name">url</span> <span class="token punctuation">=</span> <span class="token value attr-value">git@github.com:next-theme/hexo-theme-next.git</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果有多个子模块，该文件中就会有多条记录。 要重点注意的是，该文件也像 .gitignore 文件一样受到（通过）版本控制。 它会和该项目的其他部分一同被拉取推送。 这就是克隆该项目的人知道去哪获得子模块的原因。</p>
+<p>然后需要修改 <code>.github/workflows/CI.tml</code> 文件：</p>
+<pre class="line-numbers language-diff" data-language="diff"><code class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   steps:
+</span><span class="token prefix unchanged"> </span><span class="token line">   - name: Checkout source
+</span><span class="token prefix unchanged"> </span><span class="token line">     uses: actions/checkout@v3
+</span><span class="token prefix unchanged"> </span><span class="token line">     with:
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">       submodules: recursive
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       fetch-depth: 0      
+</span></span>
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   - name: Restore file modification time
+</span><span class="token prefix unchanged"> </span><span class="token line">     run: find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这么做是让 GitHub Actions 在运行 checkout 工作流时，将子模块一同拉取，保证主题也正常被拉取到工作坏境中。</p>
+<p>一切完成后还需要将执行下述命令来将本地修改推送到软缎仓库：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"Fix theme submodule"</span>
+<span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <tags>
         <tag>hexo</tag>
