@@ -250,7 +250,7 @@
 </span><span class="token prefix unchanged"> </span><span class="token line">     run: find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这么做是让 GitHub Actions 在运行 checkout 工作流时，将子模块一同拉取，保证主题也正常被拉取到工作坏境中。</p>
-<p>一切完成后还需要将执行下述命令来将本地修改推送到软缎仓库：</p>
+<p>一切完成后还需要将执行下述命令来将本地修改推送到远端仓库：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
 <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"Fix theme submodule"</span>
 <span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
