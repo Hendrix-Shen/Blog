@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/04/23/1.hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搭建 Hexo 博客</title>
-    <url>/2023/05/16/deploy-hexo-pages/</url>
+    <url>/2023/05/16/2.deploy-hexo-pages/</url>
     <content><![CDATA[<h1 id="部署方案"><a href="#部署方案" class="headerlink" title="部署方案"></a>部署方案</h1><p>此方案需要两个仓库：</p>
 <ol>
 <li>源码仓库（私有）：Hexo 配置文件以及写作等 <strong>原始内容</strong> 均在此操作进行，向此仓库 <strong>push</strong> 后通过 GitHub Actions 部署，并向页面仓库推送。</li>
@@ -79,21 +100,155 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/04/23/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+    <title>CloudFlare 封号事件</title>
+    <url>/2024/06/29/3.cloud-flare-blocking-incident/</url>
+    <content><![CDATA[<div class="timeline undefined"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>2024</p>
+</div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.03</p>
+</div></div><div class='timeline-item-content'><h2 id="序章"><a href="#序章" class="headerlink" title="序章"></a>序章</h2><h3 id="邮件警告"><a href="#邮件警告" class="headerlink" title="邮件警告"></a>邮件警告</h3><p>从 2024 年 6 月 3 日 0 时 47 分开始，陆续收到了来自 CloudFlare 的邮件。看起来是这样的：<br><img src="2024-06-29_215154_com.png"></p>
+<div class="note info no-icon flat"><p>大致是在说：CloudFlare 接到了来自 netcraft 的报告，匿名报告者称下述路径涉嫌钓鱼网站<br><a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a><br><a href="https://gh-proxy.hendrixshen.top/session">https://gh-proxy.hendrixshen.top/session</a><br><a href="https://gh-proxy.hendrixshen.top/about.php">https://gh-proxy.hendrixshen.top/about.php</a><br><a href="https://gh-proxy.hendrixshen.top/about.php7">https://gh-proxy.hendrixshen.top/about.php7</a><br><a href="https://gh-proxy.hendrixshen.top/index.html">https://gh-proxy.hendrixshen.top/index.html</a><br><a href="https://gh-proxy.hendrixshen.top/search/custom_scopes">https://gh-proxy.hendrixshen.top/search/custom_scopes</a><br>其中 <a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a> 被认定是网络钓鱼。</p>
+</div>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>后续分别在 2024&#x2F;6&#x2F;3 1:13、2024&#x2F;6&#x2F;3 2:48、2024&#x2F;6&#x2F;3 21:18、2024&#x2F;6&#x2F;3 21:18 接到四封类似邮件，内容都是一个模板就不放图了。</p>
+<p>访问被阻止的站点看起来是这样的：<br><img src="2024-06-29_224404_com.png"></p>
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.04</p>
+</div></div><div class='timeline-item-content'><h3 id="暂停帐户"><a href="#暂停帐户" class="headerlink" title="暂停帐户"></a>暂停帐户</h3><p><img src="2024-06-29_214627_com.png"></p>
+<div class="note warn no-icon flat"><p>“可能违反服务条款”、“不会影响、禁用或删除您当前的服务”</p>
+</div>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h3 id="全域封锁"><a href="#全域封锁" class="headerlink" title="全域封锁"></a>全域封锁</h3><div class="note warn no-icon flat"><p>这个全域封锁右侧的“请求审查”按钮是点不动的，而且全域封锁是针对帐户的，所以同属这个帐户管理的域名全部被全域分所</p>
+</div>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p><img src="2024-06-29_224848_com.png"></p>
+<h3 id="尝试同信任与安全团队联系"><a href="#尝试同信任与安全团队联系" class="headerlink" title="尝试同信任与安全团队联系"></a>尝试同信任与安全团队联系</h3><p><img src="2024-06-29_222233_com.png"></p>
+<div class="note info no-icon flat"><p>原文如下（已修正错别字）：<br>我注意到 <a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a> 被报告涉嫌钓鱼网站<br>事实上， 整个 gh-proxy.hendrixshen.top&#x2F;* 都是使用 CloudFlare Workers 对 github.com 进行代理的，其中 GitHub 的 登录 功能是不可用的，此过程中只对请求进行重定向，不涉及到任何存储功能。<br>暂停账户及链接封锁已经对我造成了严重的影响，我希望 CloudFlare 能够加快审查速度，并给出合理的解释。</p>
+</div>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.06</p>
+</div></div><div class='timeline-item-content'><h3 id="支持平台提交工单"><a href="#支持平台提交工单" class="headerlink" title="支持平台提交工单"></a>支持平台提交工单</h3><p><img src="2024-06-29_223557_com.png"></p>
+<div class="note info no-icon flat"><p>原文如下：<br>我的帐户被暂停，已经联系支持与信任部门，但未得到任何回复，我想得到关于审查进度信息</p>
+</div>
+
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>感谢您联系 Cloudflare 技术支持。</p>
+<p>我们已将此请求升级到我们的信任和安全团队进行审查。信任和安全团队将很快与您联系，并帮助解决您的请求。</p>
+<p><strong>请注意，您向技术支持部门提出的请求已关闭，因为我们的信任和安全团队需要直接跟进。</strong></p>
+<p>如果您需要任何其他<strong>技术支持</strong>帮助，请按照我们支持门户网站上的说明进行操作。</p>
+<p>此工单现在将标记为已关闭。</p>
+<p><strong>Sufi</strong> | Cloudflare 支持<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+</div>
+
+<p>在工单被回复前还有个小插曲：<strong>先交钱再说</strong><br><img src="2024-06-29_225303_com.png"></p>
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.07</p>
+</div></div><div class='timeline-item-content'><h3 id="非全域封锁解除"><a href="#非全域封锁解除" class="headerlink" title="非全域封锁解除"></a>非全域封锁解除</h3><p>其它几条审核日志与此类似就不放图了。本以为全域封锁也会陆续解除，但这就结束了？<br><img src="2024-06-29_225742_com.png"></p>
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.08</p>
+</div></div><div class='timeline-item-content'><h2 id="对线"><a href="#对线" class="headerlink" title="对线"></a>对线</h2><h3 id="再次提交工单"><a href="#再次提交工单" class="headerlink" title="再次提交工单"></a>再次提交工单</h3><p><img src="2024-06-29_230600_com.png"></p>
+<div class="note info no-icon flat"><p>原文如下（已修正错别字）：<br>两天前我提交了有关帐户被暂停的情况询问请求，你们回复信任与安全团队会与我联系，并解决该问题。然而两天过去了，我没有得到任何回复，没有任何人联系我，包括我四天前主动通过邮件向信任与安全团队，也没有得到任何回复。我不能理解你们处理问题的态度，也看不到你们解决问题的诚意，如果你们持续保持沉默，我将转向其它平台不再使用 CloudFlare。</p>
+</div>
+
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>感谢您联系 Cloudflare 账单支持，并感谢您在我们的排队时间高于正常水平时的耐心等待。我们的信任与安全团队确实在排队处理您的 ▓▓▓▓ 号工单，但由于排队人数高于正常水平，这些工单将按照收到的顺序进行回复，因此可能需要比预期更长的时间。</p>
+<p>请注意，我无法提供信任与安全团队直接与您跟进的预计时间，但他们需要这样做，因为我们的团队无法了解他们的排队情况。我们希望您不要发送重复的回复，或制作重复的工单，因为这将延迟我们的回复。</p>
+<p>此单可视为已关闭，但如果您有任何账单查询，请提交新工单寻求帮助。</p>
+<p>谨致问候，</p>
+<p>Bex | Cloudflare 账单专家<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+</div>
+
+<h3 id="来自信任与安全团队的第一次回应"><a href="#来自信任与安全团队的第一次回应" class="headerlink" title="来自信任与安全团队的第一次回应"></a>来自信任与安全团队的第一次回应</h3><p><img src="2024-06-29_231943_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>该账户违反了 Cloudflare 的服务条款。特别是网络钓鱼。</p>
+<p>请提供详细解释，说明该账户为何存在恶意活动，您采取了哪些措施进行纠正，以及您将采取哪些措施确保此类情况不再发生。一旦有了这些信息，我们就可以重新评估该账户的状态。</p>
+<p>谨致问候，<br>Cloudflare 信任与安全</p>
+</div>
+
+<h3 id="第一次回怼"><a href="#第一次回怼" class="headerlink" title="第一次回怼"></a>第一次回怼</h3><p><img src="2024-06-29_232850_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>我再说一遍，我没有进行网络钓鱼。第一个被标记为网络钓鱼的网站是使用 CloudFlare Worker 的 GitHub 代理。代理的 GitHub 登录页面假定我在进行网络钓鱼，但事实上该 Worker 没有任何存储空间。我现在已经删除了指向该 Worker 的路由。但我并没有删除 Worker，也没有修改它的代码以便你们进行调查。我不会为我没做过的事情做任何承诺。我认为这是一份虚假报告，希望你们能尽快做出回应。</p>
+</div>
+
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.10</p>
+</div></div><div class='timeline-item-content'><h3 id="迷惑操作"><a href="#迷惑操作" class="headerlink" title="迷惑操作"></a>迷惑操作</h3><p><img src="2024-06-29_234159_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好:</p>
+<p>您可能已经收到了来自 Cloudflare 的多份通知，其中包含滥用报告人的信息。我们建议您与滥用报告者解决此事。如果他们撤销了对您网站的评估，请向我们提供他们的回复以供审查。</p>
+</div>
+
+<h3 id="再次回怼"><a href="#再次回怼" class="headerlink" title="再次回怼"></a>再次回怼</h3><p><img src="2024-06-29_234741_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>你自己看过报告了吗？报告明确指出问题已经解决。你们处理此事的效率之低令人难以置信，一次来回沟通就花了好几天时间。我想问一下，谁应该为浪费的时间买单？</p>
+</div>
+
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.18</p>
+</div></div><div class='timeline-item-content'><h3 id="投诉工单"><a href="#投诉工单" class="headerlink" title="投诉工单"></a>投诉工单</h3><p><img src="2024-06-29_235114_com.png"></p>
+<div class="note info no-icon flat"><p>原文如下：<br>事情从 netcraft 报告我的域名涉嫌网络钓鱼开始，netcraft 报告了几个可能的 URL，被你们封禁。后来你们在邮件通知我的帐户被暂停，提及不会影像服务，但事实上你们屏蔽了帐户下与此事件无关的其他域名。所谓的 “请求审查” 按钮也是不可用的状态。目前“信任与安全”部门已经长达一周没有回复任何信息，我不知道你们还是否在跟进这件事，还是说像丢垃圾一样弃之一旁。你们“安全与信任”部门，给我回复了一篇 netcraft 的报告，让我先解决报告中提及问题，但事实上这篇报告早就被标记为已解决，你们甚至没有自己审查过这篇报告就把责任丢给我。我想问如果你们部门的做法存在问题，难道要让用户承担后果吗？</p>
+</div>
+
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>感谢您联系 Cloudflare 技术支持。</p>
+<p>我们已将此请求升级到我们的信任和安全团队进行审查。信任和安全团队将很快与您联系，并帮助解决您的请求。</p>
+<p><strong>请注意，您向技术支持部门提出的请求已关闭，因为我们的信任和安全团队需要直接跟进。</strong></p>
+<p>如果您需要任何其他<strong>技术支持</strong>帮助，请按照我们支持门户网站上的说明进行操作。</p>
+<p>此工单现在将标记为已关闭。</p>
+<p><strong>Joe</strong> | Cloudflare 支持<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+</div>
+
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.21</p>
+</div></div><div class='timeline-item-content'><h3 id="也许是不死心"><a href="#也许是不死心" class="headerlink" title="也许是不死心"></a>也许是不死心</h3><p><img src="2024-06-29_235535_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>距离我上次回复邮件已经快两周了，你们仍然没有回复任何信息，难道你们不想解决这个问题了吗？</p>
+</div>
+
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.22</p>
+</div></div><div class='timeline-item-content'><h3 id="再次拉扯"><a href="#再次拉扯" class="headerlink" title="再次拉扯"></a>再次拉扯</h3><p><img src="2024-06-30_000029_com.png"></p>
+<div class="note info no-icon flat"><p>信任安全团队仍然没有任何回应，此问题已经持续将近20天，我已经从 cloudflare 删除了与本次事件无关但被阻止的域名。我希望审查结束后，将这两个域名一并解除封禁。同时，你们消极的态度我需要你们作出明确的解释，我认为你们根本不在乎免费计划的用户，请给我一个继续使用 cloudflare 的理由。如果你们最终不能解决这个问题，我将会考虑使用其他平台，同时不可能再推荐其他人使用 cloudflare！你们总是说信任安全团队会尽快与我联系，但是我没有得到任何信息。排队时间已经快到两周了，我希望得到一个合理的解释。我也想知道信任安全团队不回复任何信息，作为用户该怎么办？</p>
+</div>
+
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>感谢您联系 Cloudflare 技术支持。</p>
+<p>我们已将此请求升级到我们的信任和安全团队进行审查。信任和安全团队将很快与您联系，并帮助解决您的请求。</p>
+<p><strong>请注意，您向技术支持部门提出的请求已关闭，因为我们的信任和安全团队需要直接跟进。</strong></p>
+<p>如果您需要任何其他<strong>技术支持</strong>帮助，请按照我们支持门户网站上的说明进行操作。</p>
+<p>此工单现在将标记为已关闭。</p>
+<p>谨致问候，</p>
+<p>Emily M<br>技术支持工程师 - Cloudflare<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+</div>
+
+<div class="note info no-icon flat"><p>原文如下：<br>你们的信任与安全团队根本不给予任何回复，每一次诉求都石沉大海，你们总是直接将议题关闭，但是没有任何实质性的进展。</p>
+</div>
+
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好、</p>
+<p>我们已将此请求上报至我们的信任与安全团队。目前该请求正在审核中，信任与安全团队将尽快与您联系，并帮助解决您的请求。请注意，我们的支持团队无法帮助您解决这一问题，也无法加快处理速度。请耐心等待信任与安全团队的回复。</p>
+<p>谨致问候，</p>
+<p>Emily M<br>技术支持工程师 - Cloudflare<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+</div>
+
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.04</p>
+</div></div><div class='timeline-item-content'><h2 id="终局"><a href="#终局" class="headerlink" title="终局"></a>终局</h2><h3 id="解决了？"><a href="#解决了？" class="headerlink" title="解决了？"></a>解决了？</h3><p><img src="2024-06-30_001040_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>请求 ▓▓▓▓、▓▓▓▓ 已关闭并合并到此请求中。</p>
+</div>
+
+<p><img src="2024-06-30_001326_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>我们已经解除了限制。请注意，如果我们发现您有任何违规行为，您的账户可能会在未经通知的情况下再次被暂停。</p>
+</div>
+
+<h3 id="只是要个破账号有什么用？"><a href="#只是要个破账号有什么用？" class="headerlink" title="只是要个破账号有什么用？"></a>只是要个破账号有什么用？</h3><p><img src="2024-06-30_001643_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>我的域名仍然受到限制，包括现有域名和我添加过的域名：hendrixshen.top、▓▓▓▓ 和 ▓▓▓▓。既然问题已经解决，为什么不取消限制呢？</p>
+</div>
+
+<h3 id="解决了？？"><a href="#解决了？？" class="headerlink" title="解决了？？"></a>解决了？？</h3><p><img src="2024-06-30_002004_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>现已更正。</p>
+</div>
+
+<h3 id="你要不要看看你在说什么？"><a href="#你要不要看看你在说什么？" class="headerlink" title="你要不要看看你在说什么？"></a>你要不要看看你在说什么？</h3><p><img src="2024-06-30_002229_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>你要不要看看你在说什么吗？我的域名还是不工作。</p>
+</div>
+
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.29</p>
+</div></div><div class='timeline-item-content'><h3 id="真的解决了！"><a href="#真的解决了！" class="headerlink" title="真的解决了！"></a>真的解决了！</h3><p><img src="2024-06-30_002929_com.png"></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p>谢谢您的说明 - 现在应该可以更正了。</p>
+</div>
+
+
+</div></div></div>
+
+
 ]]></content>
   </entry>
 </search>
