@@ -4,17 +4,18 @@
     <title>Hello World</title>
     <url>/2023/04/23/1.hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <tags>
@@ -24,73 +25,82 @@
   <entry>
     <title>搭建 Hexo 博客</title>
     <url>/2023/05/16/2.deploy-hexo-pages/</url>
-    <content><![CDATA[<h1 id="部署方案"><a href="#部署方案" class="headerlink" title="部署方案"></a>部署方案</h1><p>此方案需要两个仓库：</p>
+    <content><![CDATA[<h1>部署方案</h1>
+<p>此方案需要两个仓库：</p>
 <ol>
 <li>源码仓库（私有）：Hexo 配置文件以及写作等 <strong>原始内容</strong> 均在此操作进行，向此仓库 <strong>push</strong> 后通过 GitHub Actions 部署，并向页面仓库推送。</li>
 <li>页面仓库（公开）：通过 Hexo 生成的静态文件存储与此，GitHub Pages 检测到仓库更新会自动进行部署。</li>
 </ol>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>需要 <a href="https://github.com/">GitHub</a> 账号一个，一台装有 <a href="https://git-scm.com/">Git</a>、<a href="https://nodejs.org/">Nodejs</a> 的电脑，脑子，手。</p>
-<h2 id="安装-hexo-cli-Hexo-主程序"><a href="#安装-hexo-cli-Hexo-主程序" class="headerlink" title="安装 hexo-cli (Hexo 主程序)"></a>安装 hexo-cli (Hexo 主程序)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-cli -g<br></code></pre></td></tr></table></figure>
-<h2 id="找到合适的目录作为博客根目录，打开-Git-Bash-并运行命令："><a href="#找到合适的目录作为博客根目录，打开-Git-Bash-并运行命令：" class="headerlink" title="找到合适的目录作为博客根目录，打开 Git Bash 并运行命令："></a>找到合适的目录作为博客根目录，打开 Git Bash 并运行命令：</h2><p>(此过程会执行 git clone操作, 网络环境不良可能需要多次重试)</p>
+<h1>准备工作</h1>
+<p>需要 <a href="https://github.com">GitHub</a> 账号一个，一台装有 <a href="https://git-scm.com">Git</a>、<a href="https://nodejs.org">Nodejs</a> 的电脑，脑子，手。</p>
+<h2 id="安装-hexo-cli-Hexo-主程序">安装 hexo-cli (Hexo 主程序)</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-cli -g<br></code></pre></td></tr></table></figure>
+<h2 id="找到合适的目录作为博客根目录，打开-Git-Bash-并运行命令：">找到合适的目录作为博客根目录，打开 Git Bash 并运行命令：</h2>
+<p>(此过程会执行 git clone操作, 网络环境不良可能需要多次重试)</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo init<br></code></pre></td></tr></table></figure>
 <p>当看到 “Start blogging with Hexo!” 时表示 Hexo 已经初始化完成。</p>
-<h2 id="启动-Hexo-本地服务端"><a href="#启动-Hexo-本地服务端" class="headerlink" title="启动 Hexo 本地服务端"></a>启动 Hexo 本地服务端</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></table></figure>
-<p>当看到 “Hexo is running at <a href="http://localhost:4000/">http://localhost:4000</a> . Press Ctrl+C to stop.” 时表示 Hexo 本地服务端启动完成，其中 <a href="http://localhost:4000/">http://localhost:4000</a> 为本地监听地址，访问该地址即可预览博客。</p>
-<h1 id="配置博客（WIP）"><a href="#配置博客（WIP）" class="headerlink" title="配置博客（WIP）"></a>配置博客（WIP）</h1><p>编辑 _config.yml 文件。下面提供一个模板（该内容可能过时，具体请参考 Hexo 官方文档）</p>
+<h2 id="启动-Hexo-本地服务端">启动 Hexo 本地服务端</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></table></figure>
+<p>当看到 “Hexo is running at <a href="http://localhost:4000">http://localhost:4000</a> . Press Ctrl+C to stop.” 时表示 Hexo 本地服务端启动完成，其中 <a href="http://localhost:4000">http://localhost:4000</a> 为本地监听地址，访问该地址即可预览博客。</p>
+<h1>配置博客（WIP）</h1>
+<p>编辑 _config.yml 文件。下面提供一个模板（该内容可能过时，具体请参考 Hexo 官方文档）</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Hexo Configuration</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/configuration.html</span><br><span class="hljs-comment">## Source: https://github.com/hexojs/hexo/</span><br><br><span class="hljs-comment"># Site</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-attr">keywords:</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">John</span> <span class="hljs-string">Doe</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">en</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">&#x27;&#x27;</span><br><br><span class="hljs-comment"># URL</span><br><span class="hljs-comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">http://example.com</span><br><span class="hljs-attr">permalink:</span> <span class="hljs-string">:year/:month/:day/:title/</span><br><span class="hljs-attr">permalink_defaults:</span><br><span class="hljs-attr">pretty_urls:</span><br>  <span class="hljs-attr">trailing_index:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span><br>  <span class="hljs-attr">trailing_html:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span><br><br><span class="hljs-comment"># Directory</span><br><span class="hljs-attr">source_dir:</span> <span class="hljs-string">source</span><br><span class="hljs-attr">public_dir:</span> <span class="hljs-string">public</span><br><span class="hljs-attr">tag_dir:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">archive_dir:</span> <span class="hljs-string">archives</span><br><span class="hljs-attr">category_dir:</span> <span class="hljs-string">categories</span><br><span class="hljs-attr">code_dir:</span> <span class="hljs-string">downloads/code</span><br><span class="hljs-attr">i18n_dir:</span> <span class="hljs-string">:lang</span><br><span class="hljs-attr">skip_render:</span><br><br><span class="hljs-comment"># Writing</span><br><span class="hljs-attr">new_post_name:</span> <span class="hljs-string">:title.md</span> <span class="hljs-comment"># File name of new posts</span><br><span class="hljs-attr">default_layout:</span> <span class="hljs-string">post</span><br><span class="hljs-attr">titlecase:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># Transform title into titlecase</span><br><span class="hljs-attr">external_link:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Open external links in new tab</span><br>  <span class="hljs-attr">field:</span> <span class="hljs-string">site</span> <span class="hljs-comment"># Apply to the whole site</span><br>  <span class="hljs-attr">exclude:</span> <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-attr">filename_case:</span> <span class="hljs-number">0</span><br><span class="hljs-attr">render_drafts:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">relative_link:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">future:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">preprocess:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;&#x27;</span><br><br><span class="hljs-comment"># Home page setting</span><br><span class="hljs-comment"># path: Root path for your blogs index page. (default = &#x27;&#x27;)</span><br><span class="hljs-comment"># per_page: Posts displayed per page. (0 = disable pagination)</span><br><span class="hljs-comment"># order_by: Posts order. (Order by date descending by default)</span><br><span class="hljs-attr">index_generator:</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span><br>  <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span><br><br><span class="hljs-comment"># Category &amp; Tag</span><br><span class="hljs-attr">default_category:</span> <span class="hljs-string">uncategorized</span><br><span class="hljs-attr">category_map:</span><br><span class="hljs-attr">tag_map:</span><br><br><span class="hljs-comment"># Metadata elements</span><br><span class="hljs-comment">## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span><br><span class="hljs-attr">meta_generator:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># Date / Time format</span><br><span class="hljs-comment">## Hexo uses Moment.js to parse and display date</span><br><span class="hljs-comment">## You can customize the date format as defined in</span><br><span class="hljs-comment">## http://momentjs.com/docs/#/displaying/format/</span><br><span class="hljs-attr">date_format:</span> <span class="hljs-string">YYYY-MM-DD</span><br><span class="hljs-attr">time_format:</span> <span class="hljs-string">HH:mm:ss</span><br><span class="hljs-comment">## updated_option supports &#x27;mtime&#x27;, &#x27;date&#x27;, &#x27;empty&#x27;</span><br><span class="hljs-attr">updated_option:</span> <span class="hljs-string">&#x27;mtime&#x27;</span><br><br><span class="hljs-comment"># Pagination</span><br><span class="hljs-comment">## Set per_page to 0 to disable pagination</span><br><span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span><br><span class="hljs-attr">pagination_dir:</span> <span class="hljs-string">page</span><br><br><span class="hljs-comment"># Include / Exclude file(s)</span><br><span class="hljs-comment">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="hljs-attr">include:</span><br><span class="hljs-attr">exclude:</span><br><span class="hljs-attr">ignore:</span><br><br><span class="hljs-comment"># Extensions</span><br><span class="hljs-comment">## Plugins: https://hexo.io/plugins/</span><br><span class="hljs-comment">## Themes: https://hexo.io/themes/</span><br><span class="hljs-attr">theme:</span> <span class="hljs-string">landscape</span><br><br><span class="hljs-comment"># Deployment</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="美化（可选）"><a href="#美化（可选）" class="headerlink" title="美化（可选）"></a>美化（可选）</h1><p>访问 <a href="https://hexo.io/themes">https://hexo.io/themes</a> 挑选喜爱的主题，作者一般会提供安装引导，不在此赘述。</p>
+<h1>美化（可选）</h1>
+<p>访问 <a href="https://hexo.io/themes">https://hexo.io/themes</a> 挑选喜爱的主题，作者一般会提供安装引导，不在此赘述。</p>
 <p>安装方式一般如下：</p>
 <ul>
 <li>npm 安装</li>
 <li>Git 安装（本部署方案需要参考：<a href="#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98%E5%AF%BC%E8%87%B4%E9%83%A8%E7%BD%B2%E5%90%8E%E7%9A%84%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD">安装主题导致部署后的页面空白</a>）</li>
 <li>直接放入文件</li>
 </ul>
-<h1 id="托管站点"><a href="#托管站点" class="headerlink" title="托管站点"></a>托管站点</h1><h2 id="妥善保管源数据"><a href="#妥善保管源数据" class="headerlink" title="妥善保管源数据"></a>妥善保管源数据</h2><p>目前 Hexo 程序仅安装在本机，一旦文章源码等丢失，恢复工作区的成本将会是巨大的。所以在此提出的方案是将文章源码托管到 GitHub 私有仓库。</p>
+<h1>托管站点</h1>
+<h2 id="妥善保管源数据">妥善保管源数据</h2>
+<p>目前 Hexo 程序仅安装在本机，一旦文章源码等丢失，恢复工作区的成本将会是巨大的。所以在此提出的方案是将文章源码托管到 GitHub 私有仓库。</p>
 <ul>
 <li>在 GitHub 上建立私有仓库</li>
 <li>在 Hexo 根目录执行（其中 <code>$REPOSITORY_URL</code> 替换为你实际的私有仓库 URL）</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git init<br>git add .<br>git commit -m <span class="hljs-string">&quot;init&quot;</span><br>git branch -M master<br>git remote add origin <span class="hljs-variable">$REPOSITORY_URL</span><br>git push -u origin master<br></code></pre></td></tr></table></figure>
-
-<h2 id="托管博客页面"><a href="#托管博客页面" class="headerlink" title="托管博客页面"></a>托管博客页面</h2><ul>
+<h2 id="托管博客页面">托管博客页面</h2>
+<ul>
 <li>在 GitHub 上建立公开仓库，一般命名为 <code>$GITHUB_USERNAME.github.io</code>，其中 <code>$GITHUB_USERNAME</code> 为你的 GitHub 用户名。（如果按照本条叙述，仓库符合要求的话，GitHub Pages 默认应该是开启的）</li>
 <li>本地生成部署用秘钥对（其中 <code>$YOUR_EMAIL</code> 替换为你的 Git 邮箱，<code>$PAGES_DEPLOY_KEY</code> 替换为密钥文件名）</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;<span class="hljs-variable">$YOUR_EMAIL</span>&quot;</span> -f ~/.ssh/<span class="hljs-variable">$PAGES_DEPLOY_KEY</span><br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>设置<strong>页面仓库</strong> Deploy Key （Settings -&gt; Deploy keys -&gt; Add deploy key），将 <code>~/.ssh/$PAGES_DEPLOY_KEY.pub</code>（公钥）文件内容粘贴 Key 文本框并勾选下方 Allow write access 选择框（开启部署秘钥仓库写权限）</li>
-<li>设置<strong>源码仓库</strong> Repository secrets （Settings -&gt; Secrets and variable -&gt; Actions -&gt; New repository secret） <ul>
+<li>设置<strong>源码仓库</strong> Repository secrets （Settings -&gt; Secrets and variable -&gt; Actions -&gt; New repository secret）
+<ul>
 <li>Name 直接填写 <code>DEPLOY_PRIVATE_KEY</code></li>
 <li>Secret 填写 <code>~/.ssh/$PAGES_DEPLOY_KEY</code>（私钥）文件内容</li>
 </ul>
 </li>
-<li>编写<strong>源码仓库</strong> GitHub Actions 自动化流水线脚本<ul>
+<li>编写<strong>源码仓库</strong> GitHub Actions 自动化流水线脚本
+<ul>
 <li>在<strong>源码仓库</strong>中的 <code>.github/workflows</code> 目录中新建文件 <code>CI.yml</code> 填写如下内容：</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">CI</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">hexo-deployment:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br><br>    <span class="hljs-attr">steps:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">source</span><br>      <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span><br>      <span class="hljs-attr">with:</span><br>        <span class="hljs-attr">fetch-depth:</span> <span class="hljs-number">0</span><br><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Restore</span> <span class="hljs-string">file</span> <span class="hljs-string">modification</span> <span class="hljs-string">time</span><br>      <span class="hljs-attr">run:</span> <span class="hljs-string">find</span> <span class="hljs-string">source</span> <span class="hljs-string">-name</span> <span class="hljs-string">&#x27;*.md&#x27;</span> <span class="hljs-string">|</span> <span class="hljs-string">while</span> <span class="hljs-string">read</span> <span class="hljs-string">file;</span> <span class="hljs-string">do</span> <span class="hljs-string">touch</span> <span class="hljs-string">-d</span> <span class="hljs-string">&quot;$(git log -1 --format=&quot;</span><span class="hljs-string">@%ct&quot;</span> <span class="hljs-string">&quot;$file&quot;</span><span class="hljs-string">)&quot;</span> <span class="hljs-string">&quot;$file&quot;</span><span class="hljs-string">;</span> <span class="hljs-string">done</span><br><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">Node.js</span><br>      <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v3</span><br>      <span class="hljs-attr">with:</span><br>        <span class="hljs-attr">node-version:</span> <span class="hljs-number">18</span><br><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Get</span> <span class="hljs-string">npm</span> <span class="hljs-string">cache</span> <span class="hljs-string">directory</span><br>      <span class="hljs-attr">id:</span> <span class="hljs-string">npm-cache-dir</span><br>      <span class="hljs-attr">shell:</span> <span class="hljs-string">bash</span><br>      <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">&quot;dir=$(npm config get cache)&quot;</span> <span class="hljs-string">&gt;&gt;</span> <span class="hljs-string">$&#123;GITHUB_OUTPUT&#125;</span><br><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/cache@v3</span><br>      <span class="hljs-attr">id:</span> <span class="hljs-string">npm-cache</span> <span class="hljs-comment"># use this to check for `cache-hit` ==&gt; if: steps.npm-cache.outputs.cache-hit != &#x27;true&#x27;</span><br>      <span class="hljs-attr">with:</span><br>        <span class="hljs-attr">path:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">steps.npm-cache-dir.outputs.dir</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">key:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.os</span> <span class="hljs-string">&#125;&#125;-node-$&#123;&#123;</span> <span class="hljs-string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">restore-keys:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          $&#123;&#123; runner.os &#125;&#125;-node-</span><br><span class="hljs-string"></span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">dependencies</span> <span class="hljs-string">&amp;</span> <span class="hljs-string">Generate</span> <span class="hljs-string">static</span> <span class="hljs-string">files</span><br>      <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">        node -v</span><br><span class="hljs-string">        npm i -g hexo-cli</span><br><span class="hljs-string">        npm i</span><br><span class="hljs-string">        hexo clean</span><br><span class="hljs-string">        hexo g</span><br><span class="hljs-string"></span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Upload</span> <span class="hljs-string">assets</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Action</span><br>      <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/upload-artifact@v3</span><br>      <span class="hljs-attr">with:</span><br>        <span class="hljs-attr">path:</span> <span class="hljs-string">public</span><br><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span><br>      <span class="hljs-attr">uses:</span> <span class="hljs-string">s0/git-publish-subdir-action@v2.6.0</span><br>      <span class="hljs-attr">env:</span><br>        <span class="hljs-attr">BRANCH:</span> <span class="hljs-string">master</span><br>        <span class="hljs-comment"># CLEAR_GLOBS_FILE: &#x27;.clear-target-files&#x27;</span><br>        <span class="hljs-attr">FOLDER:</span> <span class="hljs-string">public</span><br>        <span class="hljs-attr">MESSAGE:</span> <span class="hljs-string">&#x27;[Blog#&#123;sha&#125;]&#123;msg&#125;&#x27;</span><br>        <span class="hljs-comment"># 这一行填写你页面仓库的 git 地址</span><br>        <span class="hljs-attr">REPO:</span> <span class="hljs-string">git@github.com:someone/some-repo.git</span><br>        <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEPLOY_PRIVATE_KEY</span> <span class="hljs-string">&#125;&#125;</span><br><br></code></pre></td></tr></table></figure>
-
-<p>注：GitHub Actions 针对公开仓库提供无限制的运行时间。GitHub Actions 针对私有仓库提供 2000 分钟&#x2F;月运行时间（Pro 计划为 3000 分钟&#x2F;月）只是写写博客免费计划绰绰有余。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><h2 id="有关-HTTPS-问题。"><a href="#有关-HTTPS-问题。" class="headerlink" title="有关 HTTPS 问题。"></a>有关 HTTPS 问题。</h2><p>如果使用 GitHub Pages 域名，即 <code>xxx.github.io</code>，则默认启用 HTTPS。</p>
+<p>注：GitHub Actions 针对公开仓库提供无限制的运行时间。GitHub Actions 针对私有仓库提供 2000 分钟/月运行时间（Pro 计划为 3000 分钟/月）只是写写博客免费计划绰绰有余。</p>
+<h1>后记</h1>
+<h2 id="有关-HTTPS-问题。">有关 HTTPS 问题。</h2>
+<p>如果使用 GitHub Pages 域名，即 <code>xxx.github.io</code>，则默认启用 HTTPS。</p>
 <p>如果使用别名（即自己的 CNAME 解析）且带 CDN 加速服务需要注意，这里以 CloudFlare 为例，在面板中配置 CNAME 后，请<strong>暂时不要</strong>启用 CloudFlare 提供的代理服务，先回到 GitHub Pages 配置页面，等待 Enforce HTTPS 选择框亮起并勾选（如果开启了 CloudFlare 邮件通知，则会收到证书透明度邮件）后，再启用 CDN 代理。</p>
 <p>虽然 GitHub Pages 中不开启强制 HTTPS 连接直接启用 CDN 在访问博客时同样提示为 HTTPS 安全连接，但事实上这个 HTTPS 形同虚设：</p>
 <p>客户端（浏览器） &lt;— HTTPS —&gt; CDN &lt;— HTTP —&gt; 服务端（GitHub Pages）</p>
 <p>而边缘证书成功申请后 HTTPS 才是真正有效的：</p>
 <p>客户端（浏览器） &lt;— HTTPS —&gt; CDN &lt;— HTTPS —&gt; 服务端（GitHub Pages）</p>
 <p>此问题的原始链接：<a href="https://gist.github.com/zbeekman/ac6eeb41ea7980f410959b13416d74c9">https://gist.github.com/zbeekman/ac6eeb41ea7980f410959b13416d74c9</a></p>
-<h2 id="安装主题导致部署后的页面空白"><a href="#安装主题导致部署后的页面空白" class="headerlink" title="安装主题导致部署后的页面空白"></a>安装主题导致部署后的页面空白</h2><p>通过 Git 安装的主题需要创建<code>子模块（submodule）</code>来嵌入<strong>源码仓库</strong>：</p>
+<h2 id="安装主题导致部署后的页面空白">安装主题导致部署后的页面空白</h2>
+<p>通过 Git 安装的主题需要创建<code>子模块（submodule）</code>来嵌入<strong>源码仓库</strong>：</p>
 <p>如果已经安装主题，请移除 <code>themes/$YOUR_THEME</code>，其中 <code>$YOUR_THEME</code> 为你的主题目录名。按如下例子修改命令，重新安装主题（以 NexT 主题为例）：</p>
 <figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">- git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br><span class="hljs-addition">+ git submodule add https://github.com/next-theme/hexo-theme-next themes/next</span><br></code></pre></td></tr></table></figure>
 <p>首先应当注意到新的 <code>.gitmodules</code> 文件。 该配置文件保存了项目 URL 与已经拉取的本地目录之间的映射：</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[submodule &quot;themes/next&quot;]</span><br>	<span class="hljs-attr">path</span> = themes/next<br>	<span class="hljs-attr">url</span> = git@github.com:next-theme/hexo-theme-next.git<br></code></pre></td></tr></table></figure>
-
 <p>如果有多个子模块，该文件中就会有多条记录。 要重点注意的是，该文件也像 .gitignore 文件一样受到（通过）版本控制。 它会和该项目的其他部分一同被拉取推送。 这就是克隆该项目的人知道去哪获得子模块的原因。</p>
 <p>然后需要修改 <code>.github/workflows/CI.tml</code> 文件：</p>
 <figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff">    steps:<br>    - name: Checkout source<br>      uses: actions/checkout@v3<br>      with:<br><span class="hljs-addition">+       submodules: recursive</span><br>        fetch-depth: 0      <br><br>    - name: Restore file modification time<br>      run: find source -name &#x27;*.md&#x27; | while read file; do touch -d &quot;$(git log -1 --format=&quot;@%ct&quot; &quot;$file&quot;)&quot; &quot;$file&quot;; done<br></code></pre></td></tr></table></figure>
-
 <p>这么做是让 GitHub Actions 在运行 checkout 工作流时，将子模块一同拉取，保证主题也正常被拉取到工作坏境中。</p>
 <p>一切完成后还需要将执行下述命令来将本地修改推送到远端仓库：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git add .<br>git commit -m <span class="hljs-string">&quot;Fix theme submodule&quot;</span><br>git push<br></code></pre></td></tr></table></figure>
@@ -104,151 +114,187 @@
     <url>/2024/06/29/3.cloud-flare-blocking-incident/</url>
     <content><![CDATA[<div class="timeline undefined"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>2024</p>
 </div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.03</p>
-</div></div><div class='timeline-item-content'><h2 id="序章"><a href="#序章" class="headerlink" title="序章"></a>序章</h2><h3 id="邮件警告"><a href="#邮件警告" class="headerlink" title="邮件警告"></a>邮件警告</h3><p>从 2024 年 6 月 3 日 0 时 47 分开始，陆续收到了来自 CloudFlare 的邮件。看起来是这样的：<br><img src="2024-06-29_215154_com.png"></p>
-<div class="note info no-icon flat"><p>大致是在说：CloudFlare 接到了来自 netcraft 的报告，匿名报告者称下述路径涉嫌钓鱼网站<br><a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a><br><a href="https://gh-proxy.hendrixshen.top/session">https://gh-proxy.hendrixshen.top/session</a><br><a href="https://gh-proxy.hendrixshen.top/about.php">https://gh-proxy.hendrixshen.top/about.php</a><br><a href="https://gh-proxy.hendrixshen.top/about.php7">https://gh-proxy.hendrixshen.top/about.php7</a><br><a href="https://gh-proxy.hendrixshen.top/index.html">https://gh-proxy.hendrixshen.top/index.html</a><br><a href="https://gh-proxy.hendrixshen.top/search/custom_scopes">https://gh-proxy.hendrixshen.top/search/custom_scopes</a><br>其中 <a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a> 被认定是网络钓鱼。</p>
+</div></div><div class='timeline-item-content'><h2 id="序章">序章</h2>
+<h3 id="邮件警告">邮件警告</h3>
+<p>从 2024 年 6 月 3 日 0 时 47 分开始，陆续收到了来自 CloudFlare 的邮件。看起来是这样的：<br>
+<img src="2024-06-29_215154_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>大致是在说：CloudFlare 接到了来自 netcraft 的报告，匿名报告者称下述路径涉嫌钓鱼网站<br>
+<a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a><br>
+<a href="https://gh-proxy.hendrixshen.top/session">https://gh-proxy.hendrixshen.top/session</a><br>
+<a href="https://gh-proxy.hendrixshen.top/about.php">https://gh-proxy.hendrixshen.top/about.php</a><br>
+<a href="https://gh-proxy.hendrixshen.top/about.php7">https://gh-proxy.hendrixshen.top/about.php7</a><br>
+<a href="https://gh-proxy.hendrixshen.top/index.html">https://gh-proxy.hendrixshen.top/index.html</a><br>
+<a href="https://gh-proxy.hendrixshen.top/search/custom_scopes">https://gh-proxy.hendrixshen.top/search/custom_scopes</a><br>
+其中 <a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a> 被认定是网络钓鱼。</p>
 </div>
-
-<p>后续分别在 2024&#x2F;6&#x2F;3 1:13、2024&#x2F;6&#x2F;3 2:48、2024&#x2F;6&#x2F;3 21:18、2024&#x2F;6&#x2F;3 21:18 接到四封类似邮件，内容都是一个模板就不放图了。</p>
-<p>访问被阻止的站点看起来是这样的：<br><img src="2024-06-29_224404_com.png"></p>
+<p>后续分别在 2024/6/3 1:13、2024/6/3 2:48、2024/6/3 21:18、2024/6/3 21:18 接到四封类似邮件，内容都是一个模板就不放图了。</p>
+<p>访问被阻止的站点看起来是这样的：<br>
+<img src="2024-06-29_224404_com.png" alt=""></p>
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.04</p>
-</div></div><div class='timeline-item-content'><h3 id="暂停帐户"><a href="#暂停帐户" class="headerlink" title="暂停帐户"></a>暂停帐户</h3><p><img src="2024-06-29_214627_com.png"></p>
+</div></div><div class='timeline-item-content'><h3 id="暂停帐户">暂停帐户</h3>
+<p><img src="2024-06-29_214627_com.png" alt=""></p>
 <div class="note warn no-icon flat"><p>“可能违反服务条款”、“不会影响、禁用或删除您当前的服务”</p>
 </div>
-
-<h3 id="全域封锁"><a href="#全域封锁" class="headerlink" title="全域封锁"></a>全域封锁</h3><div class="note warn no-icon flat"><p>这个全域封锁右侧的“请求审查”按钮是点不动的，而且全域封锁是针对帐户的，所以同属这个帐户管理的域名全部被全域分所</p>
+<h3 id="全域封锁">全域封锁</h3>
+<div class="note warn no-icon flat"><p>这个全域封锁右侧的“请求审查”按钮是点不动的，而且全域封锁是针对帐户的，所以同属这个帐户管理的域名全部被全域分所</p>
 </div>
-
-<p><img src="2024-06-29_224848_com.png"></p>
-<h3 id="尝试同信任与安全团队联系"><a href="#尝试同信任与安全团队联系" class="headerlink" title="尝试同信任与安全团队联系"></a>尝试同信任与安全团队联系</h3><p><img src="2024-06-29_222233_com.png"></p>
-<div class="note info no-icon flat"><p>原文如下（已修正错别字）：<br>我注意到 <a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a> 被报告涉嫌钓鱼网站<br>事实上， 整个 gh-proxy.hendrixshen.top&#x2F;* 都是使用 CloudFlare Workers 对 github.com 进行代理的，其中 GitHub 的 登录 功能是不可用的，此过程中只对请求进行重定向，不涉及到任何存储功能。<br>暂停账户及链接封锁已经对我造成了严重的影响，我希望 CloudFlare 能够加快审查速度，并给出合理的解释。</p>
+<p><img src="2024-06-29_224848_com.png" alt=""></p>
+<h3 id="尝试同信任与安全团队联系">尝试同信任与安全团队联系</h3>
+<p><img src="2024-06-29_222233_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>原文如下（已修正错别字）：<br>
+我注意到 <a href="https://gh-proxy.hendrixshen.top/login">https://gh-proxy.hendrixshen.top/login</a> 被报告涉嫌钓鱼网站<br>
+事实上， 整个 gh-proxy.hendrixshen.top/* 都是使用 CloudFlare Workers 对 <a href="http://github.com">github.com</a> 进行代理的，其中 GitHub 的 登录 功能是不可用的，此过程中只对请求进行重定向，不涉及到任何存储功能。<br>
+暂停账户及链接封锁已经对我造成了严重的影响，我希望 CloudFlare 能够加快审查速度，并给出合理的解释。</p>
 </div>
-
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.06</p>
-</div></div><div class='timeline-item-content'><h3 id="支持平台提交工单"><a href="#支持平台提交工单" class="headerlink" title="支持平台提交工单"></a>支持平台提交工单</h3><p><img src="2024-06-29_223557_com.png"></p>
-<div class="note info no-icon flat"><p>原文如下：<br>我的帐户被暂停，已经联系支持与信任部门，但未得到任何回复，我想得到关于审查进度信息</p>
+</div></div><div class='timeline-item-content'><h3 id="支持平台提交工单">支持平台提交工单</h3>
+<p><img src="2024-06-29_223557_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>原文如下：<br>
+我的帐户被暂停，已经联系支持与信任部门，但未得到任何回复，我想得到关于审查进度信息</p>
 </div>
-
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>感谢您联系 Cloudflare 技术支持。</p>
 <p>我们已将此请求升级到我们的信任和安全团队进行审查。信任和安全团队将很快与您联系，并帮助解决您的请求。</p>
 <p><strong>请注意，您向技术支持部门提出的请求已关闭，因为我们的信任和安全团队需要直接跟进。</strong></p>
 <p>如果您需要任何其他<strong>技术支持</strong>帮助，请按照我们支持门户网站上的说明进行操作。</p>
 <p>此工单现在将标记为已关闭。</p>
-<p><strong>Sufi</strong> | Cloudflare 支持<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+<p><strong>Sufi</strong> | Cloudflare 支持<br>
+登录以加入 Cloudflare 社区，获取建议和见解。</p>
 </div>
-
-<p>在工单被回复前还有个小插曲：<strong>先交钱再说</strong><br><img src="2024-06-29_225303_com.png"></p>
+<p>在工单被回复前还有个小插曲：<strong>先交钱再说</strong><br>
+<img src="2024-06-29_225303_com.png" alt=""></p>
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.07</p>
-</div></div><div class='timeline-item-content'><h3 id="非全域封锁解除"><a href="#非全域封锁解除" class="headerlink" title="非全域封锁解除"></a>非全域封锁解除</h3><p>其它几条审核日志与此类似就不放图了。本以为全域封锁也会陆续解除，但这就结束了？<br><img src="2024-06-29_225742_com.png"></p>
+</div></div><div class='timeline-item-content'><h3 id="非全域封锁解除">非全域封锁解除</h3>
+<p>其它几条审核日志与此类似就不放图了。本以为全域封锁也会陆续解除，但这就结束了？<br>
+<img src="2024-06-29_225742_com.png" alt=""></p>
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.08</p>
-</div></div><div class='timeline-item-content'><h2 id="对线"><a href="#对线" class="headerlink" title="对线"></a>对线</h2><h3 id="再次提交工单"><a href="#再次提交工单" class="headerlink" title="再次提交工单"></a>再次提交工单</h3><p><img src="2024-06-29_230600_com.png"></p>
-<div class="note info no-icon flat"><p>原文如下（已修正错别字）：<br>两天前我提交了有关帐户被暂停的情况询问请求，你们回复信任与安全团队会与我联系，并解决该问题。然而两天过去了，我没有得到任何回复，没有任何人联系我，包括我四天前主动通过邮件向信任与安全团队，也没有得到任何回复。我不能理解你们处理问题的态度，也看不到你们解决问题的诚意，如果你们持续保持沉默，我将转向其它平台不再使用 CloudFlare。</p>
+</div></div><div class='timeline-item-content'><h2 id="对线">对线</h2>
+<h3 id="再次提交工单">再次提交工单</h3>
+<p><img src="2024-06-29_230600_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>原文如下（已修正错别字）：<br>
+两天前我提交了有关帐户被暂停的情况询问请求，你们回复信任与安全团队会与我联系，并解决该问题。然而两天过去了，我没有得到任何回复，没有任何人联系我，包括我四天前主动通过邮件向信任与安全团队，也没有得到任何回复。我不能理解你们处理问题的态度，也看不到你们解决问题的诚意，如果你们持续保持沉默，我将转向其它平台不再使用 CloudFlare。</p>
 </div>
-
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>感谢您联系 Cloudflare 账单支持，并感谢您在我们的排队时间高于正常水平时的耐心等待。我们的信任与安全团队确实在排队处理您的 ▓▓▓▓ 号工单，但由于排队人数高于正常水平，这些工单将按照收到的顺序进行回复，因此可能需要比预期更长的时间。</p>
 <p>请注意，我无法提供信任与安全团队直接与您跟进的预计时间，但他们需要这样做，因为我们的团队无法了解他们的排队情况。我们希望您不要发送重复的回复，或制作重复的工单，因为这将延迟我们的回复。</p>
 <p>此单可视为已关闭，但如果您有任何账单查询，请提交新工单寻求帮助。</p>
 <p>谨致问候，</p>
-<p>Bex | Cloudflare 账单专家<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+<p>Bex | Cloudflare 账单专家<br>
+登录以加入 Cloudflare 社区，获取建议和见解。</p>
 </div>
-
-<h3 id="来自信任与安全团队的第一次回应"><a href="#来自信任与安全团队的第一次回应" class="headerlink" title="来自信任与安全团队的第一次回应"></a>来自信任与安全团队的第一次回应</h3><p><img src="2024-06-29_231943_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>该账户违反了 Cloudflare 的服务条款。特别是网络钓鱼。</p>
+<h3 id="来自信任与安全团队的第一次回应">来自信任与安全团队的第一次回应</h3>
+<p><img src="2024-06-29_231943_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+该账户违反了 Cloudflare 的服务条款。特别是网络钓鱼。</p>
 <p>请提供详细解释，说明该账户为何存在恶意活动，您采取了哪些措施进行纠正，以及您将采取哪些措施确保此类情况不再发生。一旦有了这些信息，我们就可以重新评估该账户的状态。</p>
-<p>谨致问候，<br>Cloudflare 信任与安全</p>
+<p>谨致问候，<br>
+Cloudflare 信任与安全</p>
 </div>
-
-<h3 id="第一次回怼"><a href="#第一次回怼" class="headerlink" title="第一次回怼"></a>第一次回怼</h3><p><img src="2024-06-29_232850_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>我再说一遍，我没有进行网络钓鱼。第一个被标记为网络钓鱼的网站是使用 CloudFlare Worker 的 GitHub 代理。代理的 GitHub 登录页面假定我在进行网络钓鱼，但事实上该 Worker 没有任何存储空间。我现在已经删除了指向该 Worker 的路由。但我并没有删除 Worker，也没有修改它的代码以便你们进行调查。我不会为我没做过的事情做任何承诺。我认为这是一份虚假报告，希望你们能尽快做出回应。</p>
+<h3 id="第一次回怼">第一次回怼</h3>
+<p><img src="2024-06-29_232850_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+我再说一遍，我没有进行网络钓鱼。第一个被标记为网络钓鱼的网站是使用 CloudFlare Worker 的 GitHub 代理。代理的 GitHub 登录页面假定我在进行网络钓鱼，但事实上该 Worker 没有任何存储空间。我现在已经删除了指向该 Worker 的路由。但我并没有删除 Worker，也没有修改它的代码以便你们进行调查。我不会为我没做过的事情做任何承诺。我认为这是一份虚假报告，希望你们能尽快做出回应。</p>
 </div>
-
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.10</p>
-</div></div><div class='timeline-item-content'><h3 id="迷惑操作"><a href="#迷惑操作" class="headerlink" title="迷惑操作"></a>迷惑操作</h3><p><img src="2024-06-29_234159_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好:</p>
+</div></div><div class='timeline-item-content'><h3 id="迷惑操作">迷惑操作</h3>
+<p><img src="2024-06-29_234159_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好:</p>
 <p>您可能已经收到了来自 Cloudflare 的多份通知，其中包含滥用报告人的信息。我们建议您与滥用报告者解决此事。如果他们撤销了对您网站的评估，请向我们提供他们的回复以供审查。</p>
 </div>
-
-<h3 id="再次回怼"><a href="#再次回怼" class="headerlink" title="再次回怼"></a>再次回怼</h3><p><img src="2024-06-29_234741_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>你自己看过报告了吗？报告明确指出问题已经解决。你们处理此事的效率之低令人难以置信，一次来回沟通就花了好几天时间。我想问一下，谁应该为浪费的时间买单？</p>
+<h3 id="再次回怼">再次回怼</h3>
+<p><img src="2024-06-29_234741_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+你自己看过报告了吗？报告明确指出问题已经解决。你们处理此事的效率之低令人难以置信，一次来回沟通就花了好几天时间。我想问一下，谁应该为浪费的时间买单？</p>
 </div>
-
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.18</p>
-</div></div><div class='timeline-item-content'><h3 id="投诉工单"><a href="#投诉工单" class="headerlink" title="投诉工单"></a>投诉工单</h3><p><img src="2024-06-29_235114_com.png"></p>
-<div class="note info no-icon flat"><p>原文如下：<br>事情从 netcraft 报告我的域名涉嫌网络钓鱼开始，netcraft 报告了几个可能的 URL，被你们封禁。后来你们在邮件通知我的帐户被暂停，提及不会影像服务，但事实上你们屏蔽了帐户下与此事件无关的其他域名。所谓的 “请求审查” 按钮也是不可用的状态。目前“信任与安全”部门已经长达一周没有回复任何信息，我不知道你们还是否在跟进这件事，还是说像丢垃圾一样弃之一旁。你们“安全与信任”部门，给我回复了一篇 netcraft 的报告，让我先解决报告中提及问题，但事实上这篇报告早就被标记为已解决，你们甚至没有自己审查过这篇报告就把责任丢给我。我想问如果你们部门的做法存在问题，难道要让用户承担后果吗？</p>
+</div></div><div class='timeline-item-content'><h3 id="投诉工单">投诉工单</h3>
+<p><img src="2024-06-29_235114_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>原文如下：<br>
+事情从 netcraft 报告我的域名涉嫌网络钓鱼开始，netcraft 报告了几个可能的 URL，被你们封禁。后来你们在邮件通知我的帐户被暂停，提及不会影像服务，但事实上你们屏蔽了帐户下与此事件无关的其他域名。所谓的 “请求审查” 按钮也是不可用的状态。目前“信任与安全”部门已经长达一周没有回复任何信息，我不知道你们还是否在跟进这件事，还是说像丢垃圾一样弃之一旁。你们“安全与信任”部门，给我回复了一篇 netcraft 的报告，让我先解决报告中提及问题，但事实上这篇报告早就被标记为已解决，你们甚至没有自己审查过这篇报告就把责任丢给我。我想问如果你们部门的做法存在问题，难道要让用户承担后果吗？</p>
 </div>
-
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>感谢您联系 Cloudflare 技术支持。</p>
 <p>我们已将此请求升级到我们的信任和安全团队进行审查。信任和安全团队将很快与您联系，并帮助解决您的请求。</p>
 <p><strong>请注意，您向技术支持部门提出的请求已关闭，因为我们的信任和安全团队需要直接跟进。</strong></p>
 <p>如果您需要任何其他<strong>技术支持</strong>帮助，请按照我们支持门户网站上的说明进行操作。</p>
 <p>此工单现在将标记为已关闭。</p>
-<p><strong>Joe</strong> | Cloudflare 支持<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+<p><strong>Joe</strong> | Cloudflare 支持<br>
+登录以加入 Cloudflare 社区，获取建议和见解。</p>
 </div>
-
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.21</p>
-</div></div><div class='timeline-item-content'><h3 id="也许是不死心"><a href="#也许是不死心" class="headerlink" title="也许是不死心"></a>也许是不死心</h3><p><img src="2024-06-29_235535_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>距离我上次回复邮件已经快两周了，你们仍然没有回复任何信息，难道你们不想解决这个问题了吗？</p>
+</div></div><div class='timeline-item-content'><h3 id="也许是不死心">也许是不死心</h3>
+<p><img src="2024-06-29_235535_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+距离我上次回复邮件已经快两周了，你们仍然没有回复任何信息，难道你们不想解决这个问题了吗？</p>
 </div>
-
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.22</p>
-</div></div><div class='timeline-item-content'><h3 id="再次拉扯"><a href="#再次拉扯" class="headerlink" title="再次拉扯"></a>再次拉扯</h3><p><img src="2024-06-30_000029_com.png"></p>
+</div></div><div class='timeline-item-content'><h3 id="再次拉扯">再次拉扯</h3>
+<p><img src="2024-06-30_000029_com.png" alt=""></p>
 <div class="note info no-icon flat"><p>信任安全团队仍然没有任何回应，此问题已经持续将近20天，我已经从 cloudflare 删除了与本次事件无关但被阻止的域名。我希望审查结束后，将这两个域名一并解除封禁。同时，你们消极的态度我需要你们作出明确的解释，我认为你们根本不在乎免费计划的用户，请给我一个继续使用 cloudflare 的理由。如果你们最终不能解决这个问题，我将会考虑使用其他平台，同时不可能再推荐其他人使用 cloudflare！你们总是说信任安全团队会尽快与我联系，但是我没有得到任何信息。排队时间已经快到两周了，我希望得到一个合理的解释。我也想知道信任安全团队不回复任何信息，作为用户该怎么办？</p>
 </div>
-
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>感谢您联系 Cloudflare 技术支持。</p>
 <p>我们已将此请求升级到我们的信任和安全团队进行审查。信任和安全团队将很快与您联系，并帮助解决您的请求。</p>
 <p><strong>请注意，您向技术支持部门提出的请求已关闭，因为我们的信任和安全团队需要直接跟进。</strong></p>
 <p>如果您需要任何其他<strong>技术支持</strong>帮助，请按照我们支持门户网站上的说明进行操作。</p>
 <p>此工单现在将标记为已关闭。</p>
 <p>谨致问候，</p>
-<p>Emily M<br>技术支持工程师 - Cloudflare<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+<p>Emily M<br>
+技术支持工程师 - Cloudflare<br>
+登录以加入 Cloudflare 社区，获取建议和见解。</p>
 </div>
-
-<div class="note info no-icon flat"><p>原文如下：<br>你们的信任与安全团队根本不给予任何回复，每一次诉求都石沉大海，你们总是直接将议题关闭，但是没有任何实质性的进展。</p>
+<div class="note info no-icon flat"><p>原文如下：<br>
+你们的信任与安全团队根本不给予任何回复，每一次诉求都石沉大海，你们总是直接将议题关闭，但是没有任何实质性的进展。</p>
 </div>
-
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好、</p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好、</p>
 <p>我们已将此请求上报至我们的信任与安全团队。目前该请求正在审核中，信任与安全团队将尽快与您联系，并帮助解决您的请求。请注意，我们的支持团队无法帮助您解决这一问题，也无法加快处理速度。请耐心等待信任与安全团队的回复。</p>
 <p>谨致问候，</p>
-<p>Emily M<br>技术支持工程师 - Cloudflare<br>登录以加入 Cloudflare 社区，获取建议和见解。</p>
+<p>Emily M<br>
+技术支持工程师 - Cloudflare<br>
+登录以加入 Cloudflare 社区，获取建议和见解。</p>
 </div>
-
-</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.04</p>
-</div></div><div class='timeline-item-content'><h2 id="终局"><a href="#终局" class="headerlink" title="终局"></a>终局</h2><h3 id="解决了？"><a href="#解决了？" class="headerlink" title="解决了？"></a>解决了？</h3><p><img src="2024-06-30_001040_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>请求 ▓▓▓▓、▓▓▓▓ 已关闭并合并到此请求中。</p>
+</div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.28</p>
+</div></div><div class='timeline-item-content'><h2 id="终局">终局</h2>
+<h3 id="解决了？">解决了？</h3>
+<p><img src="2024-06-30_001040_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+请求 ▓▓▓▓、▓▓▓▓ 已关闭并合并到此请求中。</p>
 </div>
-
-<p><img src="2024-06-30_001326_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<p><img src="2024-06-30_001326_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>我们已经解除了限制。请注意，如果我们发现您有任何违规行为，您的账户可能会在未经通知的情况下再次被暂停。</p>
 </div>
-
-<h3 id="只是要个破账号有什么用？"><a href="#只是要个破账号有什么用？" class="headerlink" title="只是要个破账号有什么用？"></a>只是要个破账号有什么用？</h3><p><img src="2024-06-30_001643_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>我的域名仍然受到限制，包括现有域名和我添加过的域名：hendrixshen.top、▓▓▓▓ 和 ▓▓▓▓。既然问题已经解决，为什么不取消限制呢？</p>
+<h3 id="只是要个破账号有什么用？">只是要个破账号有什么用？</h3>
+<p><img src="2024-06-30_001643_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+我的域名仍然受到限制，包括现有域名和我添加过的域名：hendrixshen.top、▓▓▓▓ 和 ▓▓▓▓。既然问题已经解决，为什么不取消限制呢？</p>
 </div>
-
-<h3 id="解决了？？"><a href="#解决了？？" class="headerlink" title="解决了？？"></a>解决了？？</h3><p><img src="2024-06-30_002004_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+<h3 id="解决了？？">解决了？？</h3>
+<p><img src="2024-06-30_002004_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>现已更正。</p>
 </div>
-
-<h3 id="你要不要看看你在说什么？"><a href="#你要不要看看你在说什么？" class="headerlink" title="你要不要看看你在说什么？"></a>你要不要看看你在说什么？</h3><p><img src="2024-06-30_002229_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>你要不要看看你在说什么吗？我的域名还是不工作。</p>
+<h3 id="你要不要看看你在说什么？">你要不要看看你在说什么？</h3>
+<p><img src="2024-06-30_002229_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+你要不要看看你在说什么吗？我的域名还是不工作。</p>
 </div>
-
 </div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.29</p>
-</div></div><div class='timeline-item-content'><h3 id="真的解决了！"><a href="#真的解决了！" class="headerlink" title="真的解决了！"></a>真的解决了！</h3><p><img src="2024-06-30_002929_com.png"></p>
-<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>您好：</p>
+</div></div><div class='timeline-item-content'><h3 id="真的解决了！">真的解决了！</h3>
+<p><img src="2024-06-30_002929_com.png" alt=""></p>
+<div class="note info no-icon flat"><p>回复如下（机器翻译）：<br>
+您好：</p>
 <p>谢谢您的说明 - 现在应该可以更正了。</p>
 </div>
-
-
 </div></div></div>
-
-
 ]]></content>
   </entry>
 </search>
