@@ -112,7 +112,7 @@
   <entry>
     <title>CloudFlare 封号事件</title>
     <url>/2024/06/29/3.cloud-flare-blocking-incident/</url>
-    <content><![CDATA[<div class="timeline undefined"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>2024</p>
+    <content><![CDATA[<div class="timeline "><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>2024</p>
 </div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>06.03</p>
 </div></div><div class='timeline-item-content'><h2 id="序章">序章</h2>
 <h3 id="邮件警告">邮件警告</h3>
